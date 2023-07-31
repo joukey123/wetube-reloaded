@@ -151,6 +151,24 @@ export const postEdit = async (req, res) => {
     file,
   } = req;
 
+  if (username !== req.session.user.username) {
+    const existsUsername = await User.exists({ username });
+    if (existsUsername) {
+      return res.status(400).render("edit-profile", {
+        pageTitle: "Edit Profile",
+        errorMessage: "uesrname exists",
+      });
+    }
+  }
+  if (email !== req.session.user.email) {
+    const existsEmail = await User.exists({ email });
+    if (existsEmail) {
+      return res.status(400).render("edit-profile", {
+        pageTitle: "Edit Profile",
+        errorMessage: "email exists",
+      });
+    }
+  }
   const updatedUser = await User.findByIdAndUpdate(
     _id,
     {
