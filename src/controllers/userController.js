@@ -4,13 +4,13 @@ import bcrypt from "bcrypt";
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
 export const postJoin = async (req, res) => {
   const { email, username, password, password2, name, location } = req.body;
-  const exists = await User.exists({});
   if (password !== password2) {
     return res.status(400).render("join", {
       pageTitle: "Join",
       errorMessage: "password not match",
     });
   }
+  const exists = await User.exists({ $or: [{ username }, { email }] });
   if (exists) {
     return res.status(400).render("join", {
       pageTitle: "Join",
