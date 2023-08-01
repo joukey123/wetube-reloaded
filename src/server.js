@@ -25,6 +25,9 @@ app.use(
 
 app.use(localsMiddleware);
 app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("assets"));
+//express한테 uploads, assets 폴더를 유저한테 공개해 달라고 설정
+// url 주소 express.static("폴더명")
 app.use("/", rootRouter);
 app.use("/users", userRouter);
 app.use("/videos", videoRouter);
