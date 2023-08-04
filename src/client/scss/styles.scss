@@ -1,0 +1,8 @@
+@import "./_variables";
+
+body {
+    background-color:  $red;
+    color: $white;
+}
+
+//css에는 변수 개념이 없지만 webpack을 통해 변환하여 적용이 가능하다.
