@@ -2,6 +2,7 @@ import User from "../models/User.js";
 import bcrypt from "bcrypt";
 
 export const getJoin = (req, res) => res.render("join", { pageTitle: "Join" });
+
 export const postJoin = async (req, res) => {
   const { email, username, password, password2, name, location } = req.body;
   if (password !== password2) {
@@ -217,7 +218,17 @@ export const postChangePassword = async (req, res) => {
 };
 export const see = async (req, res) => {
   const { id } = req.params;
-  const user = await User.findById(id).populate("videos");
+  const user = await User.findById(id).populate({
+    path: "videos",
+    populate: {
+      path: "owner",
+      model: "User",
+    },
+  });
+
+  //double populate (video정보는 가져오지만 비디오의 owner 정보가 필요해서)
+  // path는 가장 먼저 populate 하고 싶은 거 그 안에 두번째 populate를 작성하면된다
+
   console.log(user);
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not found" });
