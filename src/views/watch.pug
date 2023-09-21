@@ -1,7 +1,7 @@
 extends base.pug
 
 block content
-    div#videoContainer
+    div#videoContainer(data-id=video._id)
         video(src="/"+video.fileUrl)
         div#videoControls.videoControls
             input#timeline(type="range" value=0 min="0" step="1")

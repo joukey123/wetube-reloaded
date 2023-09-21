@@ -118,12 +118,19 @@ const handelMouseLeave = () => {
   }, 3000);
 };
 
+const handleEnded = () => {
+  const { id } = videoContainer.dataset;
+  console.log(id);
+  fetch(`/api/video/${id}/view`, { method: "POST" });
+};
+
 playBtn.addEventListener("click", handlePlayClick);
 muteBtn.addEventListener("click", handleMute);
 volumnRange.addEventListener("input", handleVolumn);
 volumnRange.addEventListener("change", handleChangeVolumn);
 video.addEventListener("loadeddata", handleLoadedMetaData);
 video.addEventListener("timeupdate", handleTimeUpDate);
+video.addEventListener("ended", handleEnded);
 videoContainer.addEventListener("mousemove", handelMouseMove);
 videoContainer.addEventListener("mouseleave", handelMouseLeave);
 timeline.addEventListener("input", handleTimelineChange);
