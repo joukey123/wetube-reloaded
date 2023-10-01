@@ -101,7 +101,6 @@ export const finishGithubLogin = async (req, res) => {
         },
       })
     ).json();
-    console.log(userData);
     const emailData = await (
       await fetch(`${apiUrl}/user/emails`, {
         headers: {
@@ -233,7 +232,6 @@ export const see = async (req, res) => {
   //double populate (video정보는 가져오지만 비디오의 owner 정보가 필요해서)
   // path는 가장 먼저 populate 하고 싶은 거 그 안에 두번째 populate를 작성하면된다
 
-  console.log(user);
   if (!user) {
     return res.status(404).render("404", { pageTitle: "User not found" });
   }

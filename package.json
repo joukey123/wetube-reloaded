@@ -7,8 +7,12 @@
     "url": "git+https://github.com/joukey123/wetube-reloaded.git"
   },
   "scripts": {
+    "start" : "node build/init.js",
+    "build" : "npm run build:server && npm run build:assets",
+    "build:server" : "babel src -d build",
+    "build:assets" : "webpack --mode=production",
     "dev:server": "nodemon",
-    "dev:assets": "webpack"
+    "dev:assets": "webpack --mode=development -w"
   },
   "author": "cookie",
   "license": "MIT",
@@ -33,7 +37,8 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.22.5",
+    "@babel/cli": "^7.23.0",
+    "@babel/core": "^7.23.0",
     "@babel/node": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
     "babel-loader": "^9.1.3",
