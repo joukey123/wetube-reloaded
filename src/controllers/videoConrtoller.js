@@ -58,7 +58,7 @@ export const postEdit = async (req, res) => {
 };
 
 export const getUpload = (req, res) => {
-  return res.render("Upload", { pageTitle: `Upload Video` });
+  return res.render("upload", { pageTitle: `Upload Video` });
 };
 
 export const postUpload = async (req, res) => {
@@ -81,7 +81,7 @@ export const postUpload = async (req, res) => {
     user.save();
     return res.redirect(`/`);
   } catch (error) {
-    return res.status(400).render("Upload", {
+    return res.status(400).render("upload", {
       pageTitle: `Upload Video`,
       errorMessage: error._message,
     });
