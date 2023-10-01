@@ -3,12 +3,12 @@ extends base
 block content
     form(method="POST", enctype="multipart/form-data").edit-profile__form
         label(for="avatar") Avatar
-        input(type="file", id="avatar", name="avatar", accept="image/*")
-        input(placeholder="Name",name="name",type="text",requied,value=loggedInUser.name)
-        input(placeholder="Email",name="email",type="email", requied,value=loggedInUser.email)
-        input(placeholder="Username",name="username",type="text", requied,value=loggedInUser.username)
-        input(placeholder="Location",name="location",type="text", requied,value=loggedInUser.location)
-        input(type="submit",value="Update Profile")
+        input(type="file", id="avatar", name="avatar", accept="image/*").loginform__input
+        input(placeholder="Name",name="name",type="text",requied,value=loggedInUser.name).loginform__input 
+        input(placeholder="Email",name="email",type="email", requied,value=loggedInUser.email).loginform__input 
+        input(placeholder="Username",name="username",type="text", requied,value=loggedInUser.username).loginform__input 
+        input(placeholder="Location",name="location",type="text", requied,value=loggedInUser.location).loginform__input 
+        input(type="submit",value="Update Profile").loginform__submit
         if (!loggedInUser.socialOnly)
             div.edit-profile__password
                 a(href="change-password") Change Password &rarr; 

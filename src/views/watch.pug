@@ -21,16 +21,16 @@ block content
                 div.videoControls__screen
                     span#fullScreen
                         i.fas.fa-expand
-    div
-        p=video.description
-        small=video.createdAt
-    div
-        small Uploaded by 
-            a(href=`/users/${video.owner._id}`) #{video.owner.name}
-    if String(video.owner._id) === String(loggedInUser._id)
-        a(href=`${video.id}/edit`) Edit Video &rarr;
-        br
-        a(href=`${video.id}/delete`) Delete Video &rarr;
+    div.videoTexts
+        div.videoTexts__desc
+            p=video.description
+            small Uploaded by 
+                a(href=`/users/${video.owner._id}`) #{video.owner.name}             
+        div.videoTexts__info
+            small=video.createdAt
+            if String(video.owner._id) === String(loggedInUser._id)
+                a(href=`${video.id}/edit`) Edit Video &rarr;
+                a(href=`${video.id}/delete`) Delete Video &rarr;
     if loggedIn
         div.video__add-comments
             form.video__comment-form#commentForm

@@ -15,6 +15,7 @@
 @import "./screens/edit-profile.scss";
 @import "./components/video-palyer.scss";
 @import "./screens/watch.scss";
+@import "./screens/upload.scss";
 
 
 //defaults {
@@ -59,7 +60,7 @@ main {
     animation: goAway .5s ease-in-out forwards;
     animation-delay: 5s;
     &.error {
-        background-color: tomato;
+        background-color: teal;
         color: white;
     }
 }

@@ -2,11 +2,11 @@ extends base.pug
 
 block content
     if(errorMessage)
-        span=errorMessage
+        span.message.error #{errorMessage}
     form(method="POST")
-        input(placeholder="Username" name="username" type="text" requied)
-        input(placeholder="Password" name="password" type="password" requied)
-        input(type="submit" value="Login")
+        input(placeholder="Username" name="username" type="text" requied).loginform__input
+        input(placeholder="Password" name="password" type="password" requied).loginform__input
+        input(type="submit" value="Login").loginform__submit
         include partials/social-login
     div.auth-switch
         span Don't have an account? 
